@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="147.86407"
+   height="31"
+   fill="none"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="freshcart-logo.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="7.2831999"
+     inkscape:cx="74.143235"
+     inkscape:cy="4.1877198"
+     inkscape:window-width="3440"
+     inkscape:window-height="1417"
+     inkscape:window-x="1072"
+     inkscape:window-y="549"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     id="g6"
+     transform="translate(2.8188052,-0.34325572)">
+    <path
+       d="m 8.123,24.862 a 2.668,2.668 0 1 0 0,-5.336 2.668,2.668 0 0 0 0,5.336 z M 6.976,9.19 H 23.115 M 8.389,12.417 h 14.02 M 7.661,19.525 h 10.453 a 2.683,2.683 0 0 0 2.537,-1.81 L 24.959,5.18 a 2.682,2.682 0 0 1 2.536,-1.81 h 3.134"
+       stroke="#0aad0a"
+       stroke-width="1.283"
+       stroke-miterlimit="10"
+       stroke-linecap="round"
+       id="path1" />
+    <path
+       d="m 8.124,22.58 a 0.3855,0.3855 0 1 0 0,-0.771 0.385,0.385 0 0 0 0,0.77 z"
+       stroke="#0aad0a"
+       stroke-width="1.069"
+       stroke-miterlimit="10"
+       stroke-linecap="round"
+       id="path2" />
+    <path
+       d="m 17.822,24.862 a 2.668,2.668 0 1 0 0,-5.336 2.668,2.668 0 0 0 0,5.336 z"
+       stroke="#0aad0a"
+       stroke-width="1.283"
+       stroke-miterlimit="10"
+       stroke-linecap="round"
+       id="path3" />
+    <path
+       d="m 17.822,22.58 a 0.386,0.386 0 1 0 0,-0.772 0.3855,0.3855 0 0 0 0,0.771 z"
+       stroke="#0aad0a"
+       stroke-width="1.069"
+       stroke-miterlimit="10"
+       stroke-linecap="round"
+       id="path4" />
+    <path
+       d="M 21.187,16.152 H 7.147 a 1.06,1.06 0 0 1 -1.01,-0.8 L 3.754,6.629 C 3.634,6.194 3.946,5.759 4.378,5.759 H 22.377 M 1,26.527 c 0,0 10.26,-3.472 24.106,0"
+       stroke="#0aad0a"
+       stroke-width="1.283"
+       stroke-miterlimit="10"
+       stroke-linecap="round"
+       id="path5" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:29.3333px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#21313c;fill-opacity:1;stroke:none"
+     x="37.422573"
+     y="22.587564"
+     id="text6"><tspan
+       sodipodi:role="line"
+       id="tspan6"
+       x="37.422573"
+       y="22.587564"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Brush Script MT';-inkscape-font-specification:'Brush Script MT Italic'">MegaShop</tspan></text>
+</svg>
