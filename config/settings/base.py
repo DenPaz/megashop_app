@@ -77,6 +77,7 @@ THIRD_PARTY_APPS = [
     "django_htmx",
     "widget_tweaks",
     "django_cotton",
+    "phonenumber_field",
 ]
 LOCAL_APPS = [
     "apps.core.config.CoreConfig",
@@ -252,3 +253,9 @@ ACCOUNT_FORMS = {"signup": "apps.users.forms.UserSignupForm"}
 # django-cotton
 # -----------------------------------------------------------------------------
 COTTON_DIR = "components"
+
+# -----------------------------------------------------------------------------
+# django-phonenumber-field
+# -----------------------------------------------------------------------------
+PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
+PHONENUMBER_DEFAULT_REGION = "BR"
