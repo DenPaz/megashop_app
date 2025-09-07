@@ -99,7 +99,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "home:index"
-LOGOUT_REDIRECT_URL = "account_login"
+LOGOUT_REDIRECT_URL = "home:index"
 LOGIN_URL = "account_login"
 
 # -----------------------------------------------------------------------------

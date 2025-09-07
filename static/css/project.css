@@ -7408,3 +7408,6 @@
 .symbol-group.symbol-hover .symbol {
   cursor: pointer;
 }
+.mouse-pointer {
+  cursor: pointer !important;
+}
