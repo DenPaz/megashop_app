@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+  {% block header %}
+    <header class="border-bottom">
+      <nav class="navbar navbar-light py-5">
+        <div class="container justify-content-lg-between justify-content-center gap-3">
+          {% block header_logo %}
+            <a href="{% url 'home:index' %}" class="navbar-brand">
+              <img src="{% static 'images/logo-megashop.svg' %}" alt="logo" />
+            </a>
+          {% endblock header_logo %}
+          {% block header_text %}
+            <span class="navbar-text">
+              {% trans "Já tem uma conta?" %}
+              <a href="{% url 'account_login' %}" class="link-primary fw-bold">
+                {% trans "Entrar" %}
+              </a>
+            </span>
+          {% endblock header_text %}
+        </div>
+      </nav>
+    </header>
+  {% endblock header %}
+  <main class="container">
+    {% block content %}
+    {% endblock content %}
+  </main>
+  {% block footer %}
+    {% include "partials/footer.html" %}
+  {% endblock footer %}
+{% endblock body %}

@@ -1,0 +1,61 @@
+{% extends "account/_base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load account %}
+{% load allauth %}
+
+{% block title %}
+  {% trans "Confirmar e-mail" %}
+{% endblock title %}
+{% block content %}
+  <section class="row justify-content-center my-lg-14 my-8">
+    <div class="col-lg-4 col-md-6 col-12 order-lg-1 order-2">
+      <img src="{% static 'assets/images/svg-graphics/fp-g.svg' %}"
+           class="img-fluid"
+           alt="email-confirm" />
+    </div>
+    <div class="col-lg-5 col-md-6 col-12 offset-lg-1 order-lg-2 order-1">
+      <div class="mb-6">
+        <h2 class="fw-bold mb-3">
+          {% trans "Confirmar e-mail" %}
+        </h2>
+        <p>
+          {% if confirmation %}
+            {% user_display confirmation.email_address.user.get_full_name as user_display %}
+            {% if can_confirm %}
+              {% blocktrans trimmed with email=confirmation.email_address.email user_display=user_display %}
+                Por favor, confirme que <a href="mailto:{{ email }}" class="fw-semibold">{{ email }}</a> é um endereço de e-mail para o usuário <span class="fw-semibold text-info">{{ user_display }}</span>.
+              {% endblocktrans %}
+            {% else %}
+              {% blocktrans trimmed with email=confirmation.email_address.email %}
+                Não é possível confirmar {{ email }} porque ele já foi confirmado por uma conta diferente.
+              {% endblocktrans %}
+            {% endif %}
+          {% else %}
+            {% url 'account_email' as email_url %}
+            {% blocktrans trimmed with email_url=email_url %}
+              Este link de confirmação de e-mail expirou ou é inválido. Por favor, emita uma <a href="{{ email_url }}">nova solicitação</a> de confirmação de e-mail.
+            {% endblocktrans %}
+          {% endif %}
+        </p>
+      </div>
+      {% url 'account_confirm_email' confirmation.key as action_url %}
+      <form method="post" action="{{ action_url }}">
+        {% csrf_token %}
+        <div class="vstack gap-3">
+          {% if confirmation %}
+            {% if can_confirm %}
+              <button type="submit" class="btn btn-primary">
+                {% trans "Confirmar" %}
+              </button>
+            {% endif %}
+          {% endif %}
+          <a href="{% url 'account_login' %}" class="btn btn-light">
+            {% trans "Voltar para o login" %}
+          </a>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock content %}
