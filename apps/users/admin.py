@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .forms import UserAdminChangeForm
 from .forms import UserAdminCreationForm
+from .models import Profile
 from .models import User
 
 if settings.DJANGO_ADMIN_FORCE_ALLAUTH:
@@ -103,5 +104,53 @@ class UserAdmin(DjangoUserAdmin):
     readonly_fields = [
         "last_login",
         "date_joined",
+    ]
+    list_per_page = 10
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (
+            _("Informações pessoais"),
+            {
+                "fields": (
+                    "user",
+                    "profile_picture",
+                    "birth_date",
+                    "gender",
+                    "phone_number",
+                ),
+            },
+        ),
+        (
+            _("Endereço"),
+            {
+                "fields": (
+                    "cep",
+                    "state",
+                    "city",
+                    "neighborhood",
+                    "street",
+                    "number",
+                    "complement",
+                ),
+            },
+        ),
+    )
+    list_display = [
+        "user",
+        "phone_number",
+    ]
+    list_filter = [
+        "user__is_active",
+    ]
+    search_fields = [
+        "user__first_name",
+        "user__last_name",
+        "user__email",
+    ]
+    readonly_fields = [
+        "user",
     ]
     list_per_page = 10
