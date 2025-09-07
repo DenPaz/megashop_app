@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load core_tags %}
+
+{% block content %}
+  <section>
+    <div class="row gy-6">
+      <div class="col-lg-3 col-md-4 col-12 border-end">
+        <ul class="nav nav-pills nav-pills-dark flex-column gap-2">
+          <li class="nav-item">
+            <a href="{% url 'accounts:personal_info_update' %}"
+               class="nav-link {% active_class 'accounts:personal_info_update' %}">
+              <i class="feather-icon icon-settings me-2"></i>
+              {% trans "Informações da conta" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'accounts:address_update' %}"
+               class="nav-link {% active_class 'accounts:address_update' %}">
+              <i class="feather-icon icon-map-pin me-2"></i>
+              {% trans "Endereço" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'accounts:password_update' %}"
+               class="nav-link {% active_class 'accounts:password_update' %}">
+              <i class="feather-icon icon-lock me-2"></i>
+              {% trans "Alterar senha" %}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-9 col-md-8 col-12 ps-8">
+        {% block sub_content %}
+        {% endblock sub_content %}
+      </div>
+    </div>
+  </section>
+{% endblock content %}

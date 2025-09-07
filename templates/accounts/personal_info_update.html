@@ -1,0 +1,27 @@
+{% extends "accounts/_base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  {% trans "Informações da conta" %}
+{% endblock title %}
+{% block sub_content %}
+  <div class="vstack gap-4">
+    <h3 class="fw-bold">
+      {% trans "Atualizar informações da conta" %}
+    </h3>
+    <form method="post"
+          action="{% url 'accounts:personal_info_update' %}"
+          enctype="multipart/form-data"
+          novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="d-flex justify-content-end mt-6">
+        <button type="submit" class="btn btn-primary">
+          {% trans "Salvar alterações" %}
+        </button>
+      </div>
+    </form>
+  </div>
+{% endblock sub_content %}

@@ -1,0 +1,26 @@
+{% extends "accounts/_base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  {% trans "Endereço" %}
+{% endblock title %}
+{% block sub_content %}
+  <div class="vstack gap-4">
+    <h3 class="fw-bold">
+      {% trans "Atualizar endereço" %}
+    </h3>
+    <form method="post"
+          action="{% url 'accounts:address_update' %}"
+          novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="d-flex justify-content-end mt-6">
+        <button type="submit" class="btn btn-primary">
+          {% trans "Salvar alterações" %}
+        </button>
+      </div>
+    </form>
+  </div>
+{% endblock sub_content %}

@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="hstack gap-4">
-        <a href="{% if user.is_authenticated %}#{% else %}{% url 'account_login' %}{% endif %}"
+        <a href="{% if user.is_authenticated %}{% url 'accounts:personal_info_update' %}{% else %}{% url 'account_login' %}{% endif %}"
            class="text-reset">
           <svg class="feather feather-user me-1"
                width="20"
