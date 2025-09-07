@@ -8,6 +8,14 @@
     <div class="row gy-6">
       <div class="col-lg-3 col-md-4 col-12 border-end">
         <ul class="nav nav-pills nav-pills-dark flex-column gap-2">
+          {% if user.is_superuser %}
+            <li class="nav-item">
+              <a href="{% url 'admin:index' %}" class="nav-link">
+                <i class="feather-icon icon-shield me-2"></i>
+                {% trans "Administração" %}
+              </a>
+            </li>
+          {% endif %}
           <li class="nav-item">
             <a href="{% url 'accounts:personal_info_update' %}"
                class="nav-link {% active_class 'accounts:personal_info_update' %}">
