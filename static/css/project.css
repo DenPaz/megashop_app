@@ -7411,3 +7411,6 @@
 .mouse-pointer {
   cursor: pointer !important;
 }
+.toast-container {
+  z-index: 1100;
+}

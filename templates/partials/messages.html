@@ -1,0 +1,41 @@
+{% load i18n %}
+
+{% if messages %}
+  <div class="toast-container position-fixed top-0 end-0 p-3"
+       aria-live="polite"
+       aria-atomic="true">
+    {% for message in messages %}
+      <div class="toast text-white bg-{{ message.tags }} shadow"
+           role="status"
+           data-bs-autohide="true"
+           data-bs-delay="3000">
+        <div class="d-flex align-items-center">
+          <div class="toast-body">
+            {{ message }}
+          </div>
+          <button type="button"
+                  class="btn-close btn-close-white me-2 m-auto"
+                  data-bs-dismiss="toast">
+          </button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+<script>
+  (function() {
+    function showToasts(root) {
+      (root || document).querySelectorAll('.toast').forEach(function(el) {
+        var inst = bootstrap.Toast.getOrCreateInstance(el);
+        inst.show();
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      showToasts();
+    });
+    document.body.addEventListener('htmx:afterSwap', function(e) {
+      var target = e.detail && e.detail.target ? e.detail.target : document;
+      showToasts(target);
+    });
+  })();
+</script>
