@@ -24,11 +24,12 @@
     {% htmx_script %}
   </head>
   <body {% block body_attributes %}
+        class="d-flex flex-column min-vh-100"
         {% endblock body_attributes %}
         hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
     {% block body %}
       {% include "partials/header.html" %}
-      <main>
+      <main class="container">
         {% block content %}
         {% endblock content %}
       </main>

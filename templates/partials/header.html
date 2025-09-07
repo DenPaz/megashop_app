@@ -1,2 +1,155 @@
 {% load i18n %}
 {% load static %}
+
+<header class="border-bottom">
+  <nav class="navbar navbar-light py-5">
+    <div class="container justify-content-sm-between justify-content-center gap-3">
+      <a href="{% url 'home:index' %}" class="navbar-brand">
+        <img src="{% static 'images/logo-megashop.svg' %}" alt="logo" />
+      </a>
+      <div class="d-lg-block d-none w-lg-400px">
+        <div class="input-group">
+          <input type="search"
+                 class="form-control"
+                 placeholder="{% trans "Pesquisar produto..." %}" />
+          <button type="button" class="btn btn-white border">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </div>
+      <div class="hstack gap-4">
+        <a href="{% if user.is_authenticated %}#{% else %}{% url 'account_login' %}{% endif %}"
+           class="text-reset">
+          <svg class="feather feather-user me-1"
+               width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          {% if user.is_authenticated %}
+            {% trans "Conta" %}
+          {% else %}
+            {% trans "Entrar" %}
+          {% endif %}
+        </a>
+        {% if user.is_authenticated %}
+          <a class="text-reset mouse-pointer"
+             data-bs-toggle="modal"
+             data-bs-target="#logoutModal">
+            <svg class="feather feather-log-out me-1"
+                 width="20"
+                 height="20"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            {% trans "Sair" %}
+          </a>
+        {% endif %}
+        <a href="#" class="text-reset position-relative">
+          <svg class="feather feather-shopping-bag"
+               width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">0</span>
+        </a>
+        <div class="d-lg-none d-inline-block">
+          <button type="button"
+                  class="navbar-toggler collapsed"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasSidebar">
+            <svg class="bi bi-text-indent-left text-primary"
+                 width="32"
+                 height="32"
+                 fill="currentColor"
+                 viewBox="0 0 16 16">
+              <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<nav class="navbar navbar-expand-lg navbar-light navbar-default navbar-offcanvas-color">
+  <div class="container">
+    <div id="offcanvasSidebar" class="offcanvas offcanvas-start" tabindex="-1">
+      <div class="offcanvas-header">
+        <a href="{% url 'home:index' %}">
+          <img src="{% static 'images/logo-megashop.svg' %}" alt="logo" />
+        </a>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
+        </button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="d-lg-none d-block mb-4">
+          <div class="input-group">
+            <input type="search"
+                   class="form-control"
+                   placeholder="{% trans "Pesquisar produto..." %}" />
+            <button type="button" class="btn btn-white border">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+        <div>
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item">
+              <a href="{% url 'home:index' %}" class="nav-link">
+                {% trans "Início" %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div id="logoutModal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">
+            {% trans "Sair" %}
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+          </button>
+        </div>
+        <div class="modal-body">
+          {% trans "Tem certeza que deseja sair?" %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            {% trans "Cancelar" %}
+          </button>
+          <button type="submit" class="btn btn-danger">
+            {% trans "Sair" %}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

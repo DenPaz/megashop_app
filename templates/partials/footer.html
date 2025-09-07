@@ -1,2 +1,17 @@
 {% load i18n %}
 {% load static %}
+
+<footer class="footer mt-auto py-5">
+  <div class="container">
+    <div class="hstack justify-content-between">
+      <a href="https://github.com/DenPaz" class="text-muted" target="_blank">
+        ©{% now "Y" %} Dennis Paz
+      </a>
+      <a href="https://labtec.ufsc.br/" target="_blank">
+        <img src="{% static 'images/logo-labtec.svg' %}"
+             class="h-35px"
+             alt="labtec-logo" />
+      </a>
+    </div>
+  </div>
+</footer>
