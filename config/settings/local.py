@@ -9,7 +9,9 @@ from .base import env
 # -----------------------------------------------------------------------------
 DEBUG = True
 SECRET_KEY = env("DJANGO_SECRET_KEY", default="1ns3cure-s3cr3t-k3y")
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]  # noqa: S104
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["http://*", "https://*"]
+
 
 # -----------------------------------------------------------------------------
 # CACHES
