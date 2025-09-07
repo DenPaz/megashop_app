@@ -10,7 +10,7 @@ from .base import env
 DEBUG = True
 SECRET_KEY = env("DJANGO_SECRET_KEY", default="1ns3cure-s3cr3t-k3y")
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["http://*", "https://*"]
+CSRF_TRUSTED_ORIGINS = ["http://*", "https://*", "https://*.ngrok-free.app"]
 
 
 # -----------------------------------------------------------------------------
