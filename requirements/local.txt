@@ -10,4 +10,4 @@ ruff==0.12.12  # https://github.com/astral-sh/ruff
 djlint==1.36.4  # https://github.com/Riverside-Healthcare/djLint
 django-debug-toolbar==6.0.0  # https://github.com/jazzband/django-debug-toolbar
 django-extensions==4.1  # https://github.com/django-extensions/django-extensions
-django-browser-reload==1.18.0  # https://github.com/adamchainz/django-browser-reload
+django-browser-reload==1.19.0  # https://github.com/adamchainz/django-browser-reload
