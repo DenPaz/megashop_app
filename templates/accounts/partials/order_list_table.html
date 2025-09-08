@@ -1,0 +1,150 @@
+{% load i18n %}
+
+<div class="table-responsive">
+  <table class="table table-centered text-nowrap text-center border-bottom">
+    <thead class="bg-light">
+      <tr>
+        <th>
+          {% trans "Pedido" %}
+        </th>
+        <th>
+          {% trans "Data" %}
+        </th>
+        <th>
+          {% trans "Itens" %}
+        </th>
+        <th>
+          {% trans "Produtos" %}
+        </th>
+        <th>
+          {% trans "Status" %}
+        </th>
+        <th>
+          {% trans "Valor" %}
+        </th>
+        <th>
+          {% trans "Ações" %}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+        <tr>
+          <td>
+            <a href="#" class="fw-semibold text-inherit">
+              #{{ order.id|stringformat:"s"|slice:":8" }}
+            </a>
+          </td>
+          <td>
+            {{ order.created|date:"d M Y" }}
+          </td>
+          <td>
+            {{ order.number_of_items }}
+          </td>
+          <td>
+            <ul class="list-inline mb-0">
+              {% for item in order.items.all|slice:":3" %}
+                <li class="list-inline-item position-relative">
+                  <a href="{{ item.product.get_absolute_url }}">
+                    <img src="{{ item.product.image.url }}"
+                         class="avatar-sm rounded border"
+                         alt="{{ item.product.name }}" />
+                  </a>
+                  {% if item.quantity > 1 %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                      {{ item.quantity }}
+                    </span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              {% if order.items.count > 3 %}
+                <li class="list-inline-item">
+                  <span class="avatar-sm d-inline-flex align-items-center justify-content-center rounded border bg-light text-muted">
+                    +{{ order.items.count|add:"-3" }}
+                  </span>
+                </li>
+              {% endif %}
+            </ul>
+          </td>
+          <td>
+            {% if order.status == "OPEN" %}
+              <span class="badge bg-warning">
+                {{ order.get_status_display }}
+              </span>
+            {% elif order.status == "PAID" %}
+              <span class="badge bg-success">
+                {{ order.get_status_display }}
+              </span>
+            {% elif order.status == "CANCELLED" %}
+              <span class="badge bg-danger">
+                {{ order.get_status_display }}
+              </span>
+            {% endif %}
+          </td>
+          <td>
+            {{ order.get_total_amount_display }}
+          </td>
+          <td class="text-muted">
+            <a href="#"
+               class="text-inherit"
+               data-bs-toggle="tooltip"
+               data-bs-title="{% trans "Ver pedido" %}">
+              <i class="feather-icon icon-eye"></i>
+            </a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="100%" class="py-5">
+            {% trans "Nenhum pedido encontrado." %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if is_paginated %}
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+            <i class="feather-icon icon-chevron-left"></i>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">
+            <i class="feather-icon icon-chevron-left"></i>
+          </span>
+        </li>
+      {% endif %}
+      {% for num in paginator.page_range %}
+        {% if num == page_obj.number %}
+          <li class="page-item active">
+            <span class="page-link">{{ num }}</span>
+          </li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ num }}">
+              {{ num }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+            <i class="feather-icon icon-chevron-right"></i>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">
+            <i class="feather-icon icon-chevron-right"></i>
+          </span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

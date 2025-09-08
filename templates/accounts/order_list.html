@@ -1,0 +1,18 @@
+{% extends "accounts/_base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  {% trans "Meus pedidos" %}
+{% endblock title %}
+{% block sub_content %}
+  <div class="vstack gap-4">
+    <h3 class="fw-bold">
+      {% trans "Meus pedidos" %}
+    </h3>
+    <div id="orders-list-table">
+      {% include "accounts/partials/order_list_table.html" %}
+    </div>
+  </div>
+{% endblock sub_content %}

@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import AddressUpdateView
+from .views import OrderListView
 from .views import PasswordUpdateView
 from .views import PersonalInfoUpdateView
 
@@ -21,5 +22,10 @@ urlpatterns = [
         route="password-update/",
         view=PasswordUpdateView.as_view(),
         name="password_update",
+    ),
+    path(
+        route="order-list/",
+        view=OrderListView.as_view(),
+        name="order_list",
     ),
 ]

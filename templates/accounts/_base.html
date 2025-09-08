@@ -17,6 +17,13 @@
             </li>
           {% endif %}
           <li class="nav-item">
+            <a href="{% url 'accounts:order_list' %}"
+               class="nav-link {% active_class 'accounts:order_list' %}">
+              <i class="feather-icon icon-shopping-bag me-2"></i>
+              {% trans "Meus pedidos" %}
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{% url 'accounts:personal_info_update' %}"
                class="nav-link {% active_class 'accounts:personal_info_update' %}">
               <i class="feather-icon icon-settings me-2"></i>
