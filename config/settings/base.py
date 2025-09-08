@@ -84,6 +84,9 @@ LOCAL_APPS = [
     "apps.home.config.HomeConfig",
     "apps.users.config.UsersConfig",
     "apps.accounts.config.AccountsConfig",
+    "apps.products.config.ProductsConfig",
+    "apps.orders.config.OrdersConfig",
+    "apps.cart.config.CartConfig",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

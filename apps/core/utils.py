@@ -7,3 +7,7 @@ def get_user_upload_path(instance, filename):
 
 def get_default_profile_picture_url():
     return static("images/profile-picture.png")
+
+
+def get_default_product_image_url():
+    return static("images/product-image.png")

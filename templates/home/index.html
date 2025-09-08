@@ -1,14 +1,51 @@
 {% extends "home/_base.html" %}
 
 {% load i18n %}
+{% load static %}
 
 {% block content %}
-  <section>
-    <h1>
-      {% trans "Página inicial" %}
-    </h1>
-    <p>
-      {% trans "Bem-vindo ao MegaShop!" %}
-    </p>
+  <section class="py-lg-16 py-10"
+           style="background: url({% static 'assets/images/banner/banner-4.jpg' %}) no-repeat;
+                  background-position: center;
+                  background-size: cover">
+  </section>
+  <section class="mt-8">
+    <div class="row mb-6">
+      <h3 class="fw-semibold">
+        {% trans "Produtos em destaque" %}
+      </h3>
+    </div>
+    <div class="product-slider">
+      {% for featured_product in featured_products %}
+        <div class="item">
+          <div class="card card-product">
+            <div class="card-body">
+              <a href="{{ featured_product.get_absolute_url }}" class="text-center">
+                <img src="{{ featured_product.get_product_image_url }}"
+                     class="img-fluid"
+                     alt="{{ featured_product.name }}" />
+              </a>
+              <a href="{{ featured_product.get_absolute_url }}"
+                 class="text-inherit fs-5">
+                {{ featured_product.name }}
+              </a>
+              <div class="hstack justify-content-between">
+                <span>{{ featured_product.get_price_display }}</span>
+                <a href="#"
+                   class="btn btn-icon btn-primary"
+                   data-bs-toggle="tooltip"
+                   title="{% trans "Adicionar ao carrinho" %}">
+                  <i class="bi bi-cart-plus"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center">
+          {% trans "Nenhum produto disponível no momento." %}
+        </p>
+      {% endfor %}
+    </div>
   </section>
 {% endblock content %}
